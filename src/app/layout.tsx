@@ -2,11 +2,11 @@ import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
 
-import { ModalProvider } from "@/components/modal";
-
 import { Search } from "./search";
 
 import type { Metadata } from "next";
+
+import { ModalProvider } from "@/components/modal";
 
 import "./globals.css";
 

@@ -50,11 +50,17 @@ export default async function GalleryImagePage({
 	const object = await getObject(id);
 	if (!object) notFound();
 
+	const [primaryType] = object.type.split("/");
+
+	let classes = "overflow-hidden";
+	if (primaryType !== "text" && object.type !== "application/json")
+		classes = "h-[65vh] " + classes;
+
 	return (
 		<div className="flex flex-col gap-4">
 			<BackButton />
 			<div className="overflow-hidden rounded-md border border-neutral-700 bg-neutral-800 shadow">
-				<div className="h-[65vh] overflow-hidden">
+				<div className={classes}>
 					<ObjectViewer
 						className="object-contain object-center"
 						controls={true}

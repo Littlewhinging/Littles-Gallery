@@ -18,6 +18,7 @@ export const GalleryItem = withSuspense<BucketObject>(
 				href={`/${object.id}`}
 			>
 				<ObjectViewer
+					title
 					className="size-full object-cover object-center transition-all focus:outline-none group-hover:object-contain"
 					value={object}
 				/>
