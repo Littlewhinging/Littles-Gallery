@@ -1,5 +1,7 @@
 import { CronologicalGallery } from "@/components/gallery";
 
+export const runtime = "edge";
+
 export default async function Home({
 	searchParams: { query }
 }: {

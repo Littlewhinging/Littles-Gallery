@@ -44,7 +44,9 @@ export async function listObjects(): Promise<Array<BucketObject>> {
 			type: mime.lookup(object.Key!) || "application/octet-stream",
 			updatedAt: object.LastModified!
 		})) ?? []
-	).sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime());
+	)
+		.sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime())
+		.filter((a) => !a.id.toLowerCase().includes("build"));
 }
 
 export async function getObject(id: string): Promise<BucketObject | null> {

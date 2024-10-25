@@ -1,4 +1,5 @@
 "use server";
+
 export const getText = async (url: string) => {
 	const response = await fetch(url);
 	return response.text();

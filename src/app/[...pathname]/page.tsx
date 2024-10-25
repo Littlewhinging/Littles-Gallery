@@ -10,6 +10,8 @@ import { ObjectViewer } from "@/components/object-viewer";
 import { Gallery } from "@/components/gallery";
 import { DownloadButton } from "@/components/download-button";
 
+export const runtime = "edge";
+
 interface Parameters {
 	pathname: Array<string>;
 }

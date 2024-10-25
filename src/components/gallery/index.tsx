@@ -7,6 +7,8 @@ import { withSuspense } from "@/hocs/suspense";
 import { groupBy } from "@/array";
 import { startOfInterval } from "@/date";
 
+export const runtime = "edge";
+
 export const Gallery = withSuspense<{
 	query?: string;
 	exclude?: Array<string>;
