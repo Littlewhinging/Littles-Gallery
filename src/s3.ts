@@ -31,11 +31,28 @@ export interface BucketObject {
 }
 
 export async function listObjects(): Promise<Array<BucketObject>> {
-	const { Contents: data } = await client.send(
+
+	var { Contents: data, NextContinuationToken: token, IsTruncated: IsTruncated } = await client.send(
 		new ListObjectsV2Command({
-			Bucket: bucketName
+			Bucket: bucketName,
 		})
 	);
+
+	while (IsTruncated) {
+		var { Contents: data2, NextContinuationToken: token, IsTruncated: IsTruncated } = await client.send(
+			new ListObjectsV2Command({
+				Bucket: bucketName,
+				ContinuationToken: token
+			})
+		);
+
+		console.log(IsTruncated)
+
+		if (data2 != undefined)
+			data = data?.concat(data2);
+		else
+			break;
+	}
 
 	return (
 		data?.map((object) => ({

@@ -6,6 +6,7 @@ import { Film, PlaySquare } from "lucide-react";
 
 import { BucketObject } from "@/s3";
 import { getJSON, getText } from "@/app/gettext";
+import Image from 'next/image'
 
 export interface ObjectViewerProps {
 	value: BucketObject;
@@ -47,10 +48,12 @@ export const ObjectViewer: FC<ObjectViewerProps> = ({
 				),
 				image: (
 					<>
-						<img
+						<Image
 							// style={{ backgroundImage: `url(${url})` }}
 							className={twMerge(className, "h-full w-full")}
 							src={url}
+							alt="Something from my gallery"
+							fill
 						/>
 						{secondaryType === "gif" && (
 							<PlaySquare className="absolute left-2 top-2 z-10 brightness-50 transition-all group-hover:brightness-75" />
